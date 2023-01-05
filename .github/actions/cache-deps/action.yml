@@ -13,7 +13,8 @@ runs:
   using: "composite"
   steps:
     - name: set output
-      run: echo "cache='${{ inputs.caching }}'" >> $GITHUB_OUTPUT
+      id: install
+      run: echo "cache=hello" >> $GITHUB_OUTPUT
       shell: bash
     - name: Cache dependencies
       if: inputs.caching == 'true'
@@ -23,7 +24,6 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      id: install
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
       run: |
         npm ci
