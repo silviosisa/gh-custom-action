@@ -1,4 +1,4 @@
-;name: "Get & cache Dependencies"
+name: "Get & cache Dependencies"
 description: "Get the dependencies and cache them."
 inputs:
   caching:
