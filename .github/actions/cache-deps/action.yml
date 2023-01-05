@@ -12,6 +12,9 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: set output
+      run: echo "cache='${{ inputs.caching }}'" >> $GITHUB_OUTPUT
+      shell: bash
     - name: Cache dependencies
       if: inputs.caching == 'true'
       id: cache
